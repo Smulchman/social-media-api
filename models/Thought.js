@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 // Schema to create Post model
-const postSchema = new Schema(
+const thoughtSchema = new Schema(
   {
     published: {
       type: Boolean,
