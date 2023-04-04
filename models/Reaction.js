@@ -34,11 +34,16 @@ reactionSchema
   .virtual("formatDate")
   // Getter
   .get(function () {
-    let time = this.createdAt.toLocaleDateString("en-US", {
+    let time =
+      this.createdAt.toLocaleDateString("en-US", {
         month: "long",
         day: "numeric",
         year: "numeric",
-      }) + "" + this.createdAt.toLocaleTimeString("en-US")
+      }) +
+      "" +
+      this.createdAt.toLocaleTimeString("en-US");
+
+    return time;
   });
 
 module.exports = reactionSchema;
