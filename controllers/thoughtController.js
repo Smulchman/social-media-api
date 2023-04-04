@@ -1,27 +1,27 @@
-const { Post, User } = require('../models');
+const { Thought, User } = require('../models');
 
 module.exports = {
-  getPosts(req, res) {
-    Post.find()
-      .then((posts) => res.json(posts))
+  getThoughts(req, res) {
+    Thought.find()
+      .then((thoughts) => res.json(thoughts))
       .catch((err) => res.status(500).json(err));
   },
-  getSinglePost(req, res) {
-    Post.findOne({ _id: req.params.postId })
-      .then((post) =>
-        !post
-          ? res.status(404).json({ message: 'No post with that ID' })
-          : res.json(post)
+  getSingleThought(req, res) {
+    Thought.findOne({ _id: req.params.thoughtId })
+      .then((thought) =>
+        !thought
+          ? res.status(404).json({ message: 'No thought with that ID' })
+          : res.json(thought)
       )
       .catch((err) => res.status(500).json(err));
   },
   // create a new post
-  createPost(req, res) {
-    Post.create(req.body)
-      .then((post) => {
+  createThought(req, res) {
+    Thought.create(req.body)
+      .then((thought) => {
         return User.findOneAndUpdate(
           { _id: req.body.userId },
-          { $addToSet: { posts: post._id } },
+          { $addToSet: { thoughts: thought._id } },
           { new: true }
         );
       })
