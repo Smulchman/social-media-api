@@ -130,7 +130,7 @@ const getRandomUserName = () => {
 
 // Gets a random email
 const getRandomEmail = () =>
-  `$${getRandomArrItem(names)}@${getRandomArrItem(emailEndings)}`;
+  `${getRandomArrItem(names)}@${getRandomArrItem(emailEndings)}`;
 
 const generateRandomUsers = (num) => {
   let users = [];
