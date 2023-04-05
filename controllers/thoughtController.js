@@ -15,12 +15,12 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-  // create a new post
+  // create a new thought
   createThought(req, res) {
     Thought.create(req.body)
       .then((thought) => {
         return User.findOneAndUpdate(
-          { _id: req.body.userId },
+          { username: req.body.username },
           { $addToSet: { thoughts: thought._id } },
           { new: true }
         );
@@ -49,7 +49,7 @@ module.exports = {
           ? res.status(404).json({ message: "No thought with that ID" })
           : res.json(thought)
       )
-      .then(() => res.json({ message: "User updated!" }))
+      // .then(() => res.json({ message: "Thought updated!" }))
       .catch((err) => res.status(500).json(err));
   },
   // delete a thought
