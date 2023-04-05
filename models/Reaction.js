@@ -40,7 +40,7 @@ reactionSchema
         day: "numeric",
         year: "numeric",
       }) +
-      "" +
+      "  " +
       this.createdAt.toLocaleTimeString("en-US");
 
     return time;
