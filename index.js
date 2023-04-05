@@ -1,3 +1,5 @@
+// this code is almost completely unchanged from the code used as starter code. (unit 18, activity 25)
+
 const express = require('express');
 const db = require('./config/connection');
 const routes = require('./routes');

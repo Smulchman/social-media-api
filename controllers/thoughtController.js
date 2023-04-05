@@ -1,11 +1,14 @@
 const { Thought, User } = require("../models");
 
+// exporting our functions to the router
 module.exports = {
+  // get all thoughts
   getThoughts(req, res) {
     Thought.find()
       .then((thoughts) => res.json(thoughts))
       .catch((err) => res.status(500).json(err));
   },
+  // get one thought by id
   getSingleThought(req, res) {
     Thought.findOne({ _id: req.params.thoughtId })
       .then((thought) =>
@@ -81,6 +84,7 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
   // deletes a reaction given the reactionId
+  // For some reason, this isn't working. I imagine it is because we are using the schema directly rather than initializing the reaction schema as it's own complete model. I might also be using the wrong id. Alas, it is too late and I am too tired.
   deleteReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },

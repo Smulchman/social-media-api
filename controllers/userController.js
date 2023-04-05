@@ -1,11 +1,14 @@
 const { Thought, User } = require("../models");
 
+// exporting our functions to the router
 module.exports = {
+  // get all users
   getUsers(req, res) {
     User.find()
       .then((users) => res.json(users))
       .catch((err) => res.status(500).json(err));
   },
+  // get one user by id
   getSingleUser(req, res) {
     User.findOne({ _id: req.params.userId })
       .then((user) =>
@@ -49,9 +52,11 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
+  // adding the id of a friend to the array of 'friends' for a given user
   addFriend(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
+      // addtoset lets us avoid adding any duplicates
       { $addToSet: { friends: req.params.friendId } }
     )
       // This error seems too simple but I'm sticking with it.
@@ -63,6 +68,7 @@ module.exports = {
       .then(() => res.json({ message: "Friend added!" }))
       .catch((err) => res.status(500).json(err));
   },
+  // removes a friend's id from the array of friends
   removeFriend(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },

@@ -29,7 +29,8 @@ You can reach me at the following email with any questions regarding this reposi
 Email: Mulcahy.Samuel@gmail.com
 
 ## Credits
-Created by Sam Mulcahy
+Created by Sam Mulcahy \
+This code is heavily based on code provided from an activity included with the full stack course.\
 I consulted the websites linked below for guidance:\
-https://stackoverflow.com/questions/18022365/mongoose-validate-email-syntax - this is where I got the regex to check if a string was an email. \
-https://github.com/moviefan322/snapi - This was where I took the code I used to seed my database with from. \
+https://stackoverflow.com/questions/18022365/mongoose-validate-email-syntax - this is where I got the regex to check if a string was an email.\
+https://github.com/moviefan322/snapi - This was where I took the code I used to seed my database with from.\

@@ -29,7 +29,7 @@ const reactionSchema = new Schema(
   }
 );
 
-// Create a virtual property `upvoteCount` that gets the amount of comments per user
+// Create a virtual property `formatted date` that shows the user the date in a legible format
 reactionSchema
   .virtual("formatDate")
   // Getter

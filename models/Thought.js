@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 const Reaction = require('./Reaction');
 
-// Schema to create Post model
+// Schema to create thought model
 const thoughtSchema = new Schema(
   {
     thoughtText: {
@@ -18,6 +18,7 @@ const thoughtSchema = new Schema(
       type: String,
       required: true,
     },
+    // importing reactions directly since they only exist in the context of thoughts and do not need their own dedicated database.
     reactions: [Reaction],
   },
   {
@@ -28,10 +29,9 @@ const thoughtSchema = new Schema(
   }
 );
 
-// Create a virtual property `upvoteCount` that gets the amount of comments per user
+// Create a virtual property `formatted date` that shows the user the date in a legible format
 thoughtSchema
   .virtual("formatDate")
-  // Getter
   .get(function () {
     let time =
       this.createdAt.toLocaleDateString("en-US", {
