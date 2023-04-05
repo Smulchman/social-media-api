@@ -53,6 +53,7 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
   // delete a thought
+  // Note that this does not remove the thought from the user's array of thoughts.
   deleteThought(req, res) {
     Thought.findOneAndDelete({ _id: req.params.thoughtId })
       .then((thought) => {
@@ -63,6 +64,7 @@ module.exports = {
       .then(() => res.json({ message: "Thought deleted!" }))
       .catch((err) => res.status(500).json(err));
   },
+  // add a reaction to the thought
   addReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
@@ -78,6 +80,7 @@ module.exports = {
       .then(() => res.json({ message: "Reaction added!" }))
       .catch((err) => res.status(500).json(err));
   },
+  // deletes a reaction given the reactionId
   deleteReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
