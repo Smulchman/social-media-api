@@ -52,9 +52,9 @@ module.exports = {
   addFriend(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
-      { $push: { friends: req.params.friendId } }
+      { $addToSet: { friends: req.params.friendId } }
     )
-      // This error doesn't really work right, but it's functional at the moment.
+      // This error seems too simple but I'm sticking with it.
       .then((user) => {
         if (!user) {
           res.status(404).json({ message: "No user with that ID" });
@@ -68,7 +68,7 @@ module.exports = {
       { _id: req.params.userId },
       { $pull: { friends: req.params.friendId } }
     )
-      // I am certain i could do something with the code below to let the user know when they go to delete a friend not on their friends list but I'm not certain how.
+      // I am certain i could do something with the code below to let the user know when they go to delete a friend not on their friends list but I'm not certain how. Ultimately the end result (the friend is not on their list) is the same, so it's not a big deal
       .then((user) => {
         if (!user) {
           res.status(404).json({ message: "No user with that ID" });
